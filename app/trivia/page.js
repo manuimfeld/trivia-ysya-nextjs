@@ -7,14 +7,15 @@ import { Timer } from "../components/Timer";
 import { useEffect, useState } from "react";
 import { randomVideo } from "../helpers/randomVideo";
 import { redirect } from "next/navigation";
+import { answersStore } from "../store/answersStore";
 
 const Page = () => {
   const [video, setVideo] = useState(null);
-  const [points, setPoints] = useState(0);
+  const answers = answersStore((state) => state.answers);
 
   useEffect(() => {
-    if (points === 11) {
-      redirect("/home/trivia/puntaje");
+    if (answers === 11) {
+      redirect("/trivia/puntaje");
     }
 
     if (video === null) {
@@ -32,12 +33,13 @@ const Page = () => {
         "selected-answer"
       );
     });
-  }, [video, points]);
+  }, [video]);
 
   return (
     <>
       {video !== null ? (
         <main className="flex flex-col items-center justify-start h-screen w-screen bg-[url('/bg-antezana.webp')] bg-no-repeat bg-center bg-cover">
+          <h1>{answers}/11</h1>
           <div className="mt-24 relative h-1/3 w-3/4  rounded-md">
             <BlackScreen />
             <VideoPlayer id={video.id} />
@@ -53,11 +55,7 @@ const Page = () => {
                 />
               );
             })}
-            <ContinueButton
-              setVideo={setVideo}
-              points={points}
-              setPoints={setPoints}
-            />
+            <ContinueButton setVideo={setVideo} />
           </div>
         </main>
       ) : null}
