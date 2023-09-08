@@ -3,8 +3,6 @@ import { timerStore } from "../store/timerStore";
 import { playingStore } from "../store/playingStore";
 
 export const Timer = () => {
-  const timerStopped = useRef(false);
-
   const timer = timerStore((state) => state.timer);
   const decrement = timerStore((state) => state.decrement);
   const playing = playingStore((state) => state.playing);
