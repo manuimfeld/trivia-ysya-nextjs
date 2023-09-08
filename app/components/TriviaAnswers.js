@@ -1,14 +1,18 @@
 import { useCallback } from "react";
 import { checkAnswer } from "../helpers/checkAnswer";
 import { playingStore } from "../store/playingStore";
+import { answersStore } from "../store/answersStore";
 
 export const TriviaAnswers = ({ title, answer }) => {
   const toggle = playingStore((state) => state.toggle);
   const playing = playingStore((state) => state.playing);
+  const increment = answersStore((state) => state.increment);
+  const incorrectAnswer = answersStore((state) => state.incorrectAnswer);
+  const correctAnswer = answersStore((state) => state.correctAnswer);
 
   const handleClick = useCallback(
     (answer) => {
-      checkAnswer(answer, title); // Comprueba la respuesta (ajusta los parámetros según tus necesidades)
+      checkAnswer(answer, title, increment, correctAnswer, incorrectAnswer); // Comprueba la respuesta (ajusta los parámetros según tus necesidades)
       toggle(); // Cambia el estado del juego
     },
     [title, toggle]
