@@ -1,13 +1,23 @@
-export const checkAnswer = (e, title) => {
+export const checkAnswer = (
+  e,
+  title,
+  increment,
+  correctAnswer,
+  incorrectAnswer
+) => {
   const answerButton = e.target;
 
-  const correctAnswer = () => {
+  const isCorrect = () => {
     answerButton.classList.add("correct-answer", "selected-answer");
+    increment();
+    correctAnswer();
   };
 
-  const incorrectAnswer = () => {
+  const isInvalid = () => {
     answerButton.classList.add("incorrect-answer", "selected-answer");
+    increment();
+    incorrectAnswer();
   };
 
-  answerButton.innerHTML === title ? correctAnswer() : incorrectAnswer();
+  answerButton.innerHTML === title ? isCorrect() : isInvalid();
 };
