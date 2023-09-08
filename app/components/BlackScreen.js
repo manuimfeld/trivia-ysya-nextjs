@@ -3,7 +3,6 @@ import { playingStore } from "../store/playingStore";
 
 export const BlackScreen = () => {
   const playing = playingStore((state) => state.playing);
-  console.log(playing);
 
   return (
     <div

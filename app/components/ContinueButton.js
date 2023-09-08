@@ -2,7 +2,6 @@ import { randomVideo } from "../helpers/randomVideo";
 import { timerStore } from "../store/timerStore";
 import { playingStore } from "../store/playingStore";
 import { useEffect } from "react";
-import { answersStore } from "../store/answersStore";
 
 export const ContinueButton = ({ setVideo }) => {
   const timer = timerStore((state) => state.timer);

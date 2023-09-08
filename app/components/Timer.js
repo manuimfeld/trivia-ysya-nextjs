@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { timerStore } from "../store/timerStore";
 import { playingStore } from "../store/playingStore";
 

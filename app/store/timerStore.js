@@ -9,3 +9,4 @@ export const timerStore = create((set) => ({
       timer: 10, // Reiniciar el temporizador a 10
     })),
 }));
+//

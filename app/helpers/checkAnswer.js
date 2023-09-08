@@ -21,3 +21,4 @@ export const checkAnswer = (
 
   answerButton.innerHTML === title ? isCorrect() : isInvalid();
 };
+//
