@@ -2,18 +2,18 @@ import { randomVideo } from "../helpers/randomVideo";
 import { timerStore } from "../store/timerStore";
 import { playingStore } from "../store/playingStore";
 import { useEffect } from "react";
+import { answersStore } from "../store/answersStore";
 
-export const ContinueButton = ({ setVideo, points, setPoints }) => {
+export const ContinueButton = ({ setVideo }) => {
   const timer = timerStore((state) => state.timer);
   const reset = timerStore((state) => state.reset);
   const playing = playingStore((state) => state.playing);
   const toggle = playingStore((state) => state.toggle);
 
   const nextVideo = () => {
-    setVideo(randomVideo);
     reset();
     toggle();
-    setPoints(points + 1);
+    setVideo(randomVideo);
   };
 
   useEffect(() => {
