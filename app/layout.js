@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Providers from "./Providers";
 import "./globals.css";
 import { Poppins } from "next/font/google";
@@ -16,7 +17,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <main className="h-screen w-screen">
+            <Image
+              src="/bg-antezana.jpg"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+              alt=""
+              className="z-[-1] fixed w-full h-full"
+            />
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );
