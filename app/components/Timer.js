@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { timerStore } from "../store/timerStore";
-import { playingStore } from "../store/playingStore";
+import { useAnswerStore } from "../store/answerStore";
 
 export const Timer = () => {
-  const timer = timerStore((state) => state.timer);
-  const decrement = timerStore((state) => state.decrement);
-  const playing = playingStore((state) => state.playing);
-  const toggle = playingStore((state) => state.toggle);
+  const { timer, decrement, isPlaying, toggleIsPlaying } = timerStore();
+  const incrementIncorrectAnswer = useAnswerStore(
+    (state) => state.incrementIncorrectAnswer
+  );
 
   useEffect(() => {
     let timerInterval;
@@ -14,13 +14,14 @@ export const Timer = () => {
     // Función para manejar el temporizador
     const handleTimer = () => {
       // Decrementa el temporizador solo si el juego está en curso
-      if (playing && timer > 0) {
+      if (isPlaying && timer > 0) {
         decrement();
       }
 
       // Si el temporizador llega a 0 y el juego está en curso, activa el toggle
-      if (timer === 0 && playing) {
-        toggle();
+      if (timer === 0 && isPlaying) {
+        incrementIncorrectAnswer();
+        toggleIsPlaying();
         clearInterval(timerInterval); // Detiene el intervalo
       }
     };
@@ -32,7 +33,7 @@ export const Timer = () => {
     return () => {
       clearInterval(timerInterval);
     };
-  }, [timer, decrement, toggle, playing]);
+  }, [timer, decrement, isPlaying, toggleIsPlaying]);
 
   return (
     <div className="md:my-2 w-full text-center">

@@ -1,34 +1,26 @@
-import { randomVideo } from "../helpers/randomVideo";
 import { timerStore } from "../store/timerStore";
-import { playingStore } from "../store/playingStore";
-import { useEffect } from "react";
+import { randomVideo } from "../helpers/randomVideo";
+import { useAnswerStore } from "../store/answerStore";
 
-export const ContinueButton = ({ setVideo }) => {
-  const timer = timerStore((state) => state.timer);
-  const reset = timerStore((state) => state.reset);
-  const playing = playingStore((state) => state.playing);
-  const toggle = playingStore((state) => state.toggle);
+export const ContinueButton = () => {
+  const { timer, reset, isPlaying, toggleIsPlaying } = timerStore();
+  const setCurrentQuestion = useAnswerStore(
+    (state) => state.setCurrentQuestion
+  );
 
-  const nextVideo = () => {
+  const handleChange = () => {
+    // Detener el temporizador y resetearlo
+    toggleIsPlaying();
     reset();
-    toggle();
-    setVideo(randomVideo);
+    // Cargar una nueva question aleatoria
+    setCurrentQuestion(randomVideo());
   };
 
-  useEffect(() => {
-    const buttonsToRemoveClasses = document.querySelectorAll(
-      ".incorrect-answer, .correct-answer"
-    );
-
-    buttonsToRemoveClasses.forEach((button) => {
-      button.classList.remove("incorrect-answer", "correct-answer");
-    });
-  }, []);
-
   return (
-    (playing === false || timer === 0) && (
+    // Renderizar el botón solo si el temporizador se agota o el juego no está en curso
+    (isPlaying === false || timer === 0) && (
       <button
-        onClick={nextVideo}
+        onClick={handleChange}
         className="text-white font-bold uppercase w-full py-2 px-4 rounded-xl bg-[#fc6812] disabled:bg-[#b46638] disabled:text-gray-400"
       >
         Siguiente

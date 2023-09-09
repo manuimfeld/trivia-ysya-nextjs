@@ -1,13 +1,12 @@
-import { useEffect } from "react";
-import { playingStore } from "../store/playingStore";
+import { timerStore } from "../store/timerStore";
 
 export const BlackScreen = () => {
-  const playing = playingStore((state) => state.playing);
+  const isPlaying = timerStore((state) => state.isPlaying);
 
   return (
     <div
       className={`absolute z-2 top-0 w-full h-full ${
-        playing === true ? "bg-black" : "bg-none"
+        isPlaying === true ? "bg-black" : "bg-none"
       }`}
     ></div>
   );
