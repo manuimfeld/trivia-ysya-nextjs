@@ -10,7 +10,7 @@ export const TriviaAnswers = ({ answer }) => {
     <button
       disabled={!isPlaying}
       onClick={(e) => checkAnswer(e)}
-      className={`${
+      className={`my-2 ${
         !isPlaying && answer === currentQuestion.title && "correct-answer"
       }  transition duration-100 ease-out  text-white font-bold uppercase w-full md:w-[45%] md:mb-2 py-2 px-4 rounded-xl bg-[#fc6812] disabled:bg-[#b46638] disabled:text-gray-400`}
     >

@@ -36,7 +36,7 @@ export const Timer = () => {
   }, [timer, decrement, isPlaying, toggleIsPlaying]);
 
   return (
-    <div className="md:my-2 w-full text-center">
+    <div className="my-4 md:my-0 md:mb-2 md:mt-6 w-full text-center">
       <span className="md:mx-auto md:grow-1 text-white mt-4 bg-red-500 px-4 py-1 rounded-full">
         {timer}
       </span>

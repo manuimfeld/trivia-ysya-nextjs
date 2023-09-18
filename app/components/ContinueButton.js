@@ -21,7 +21,7 @@ export const ContinueButton = () => {
     (isPlaying === false || timer === 0) && (
       <button
         onClick={handleChange}
-        className="text-white font-bold uppercase w-full py-2 px-4 rounded-xl bg-[#fc6812] disabled:bg-[#b46638] disabled:text-gray-400"
+        className="mt-2 text-white font-bold uppercase w-full py-2 px-4 rounded-xl bg-[#fc6812] disabled:bg-[#b46638] disabled:text-gray-400"
       >
         Siguiente
       </button>
