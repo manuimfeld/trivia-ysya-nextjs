@@ -30,7 +30,7 @@ const Trivia = () => {
 
   if (currentQuestion !== null) {
     return (
-      <div className="z-10 flex flex-col items-center justify-start h-screen w-screen">
+      <section className="z-10 flex flex-col items-center justify-start h-screen w-screen">
         <h1>{answerData.totalQuestions}/11</h1>
         <div className="mt-6 md:mt-24 relative h-1/3 w-3/4  rounded-md">
           <VideoPlayer id={currentQuestion.id} />
@@ -42,7 +42,7 @@ const Trivia = () => {
           })}
           <ContinueButton />
         </div>
-      </div>
+      </section>
     );
   }
 };

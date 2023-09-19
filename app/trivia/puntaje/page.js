@@ -22,6 +22,21 @@ const Points = () => {
     restartGame();
   };
 
+  const postPoints = async () => {
+    try {
+      const response = await fetch("/api/leaderboard");
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data);
+      } else {
+        console.error("Error al subir la puntuación:", data.error);
+      }
+    } catch (error) {
+      console.error("Error al realizar la solicitud:", error);
+    }
+  };
+
   return (
     <div className="h-screen w-screen">
       <div className="h-full w-3/4 mx-auto flex flex-col justify-center items-center text-center">
@@ -62,7 +77,10 @@ const Points = () => {
               </span>
             </p>
             <Leaderboard />
-            <button className="mt-2 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-[#fc6812] ">
+            <button
+              onClick={postPoints}
+              className="mt-2 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-[#fc6812] "
+            >
               Subir puntuación
             </button>
             <Link
@@ -72,6 +90,7 @@ const Points = () => {
             >
               Volver a intentar
             </Link>
+            <LoginButton />
           </>
         )}
       </div>
