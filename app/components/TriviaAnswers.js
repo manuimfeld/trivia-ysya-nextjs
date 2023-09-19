@@ -5,10 +5,11 @@ import { timerStore } from "../store/timerStore";
 export const TriviaAnswers = ({ answer }) => {
   const { currentQuestion } = useAnswerStore((state) => state.answerData);
   const isPlaying = timerStore((state) => state.isPlaying);
+  const timer = timerStore((state) => state.timer);
 
   return (
     <button
-      disabled={!isPlaying}
+      disabled={!isPlaying || timer === 0}
       onClick={(e) => checkAnswer(e)}
       className={`my-2 ${
         !isPlaying && answer === currentQuestion.title && "correct-answer"
