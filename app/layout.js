@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
               quality={100}
               alt="Portada del disco Antezana 247 de YSY A"
               className="z-[-1] fixed w-full h-full"
-              loading="lazy"
             />
             {children}
           </main>
