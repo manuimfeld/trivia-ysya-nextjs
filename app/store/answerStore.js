@@ -14,6 +14,12 @@ export const useAnswerStore = create((set) => ({
         currentQuestion: data,
       },
     })),
+  setAnswerData: (data) =>
+    set(() => ({
+      answerData: {
+        ...data,
+      },
+    })),
 
   incrementCorrectAnswer: () =>
     set((state) => ({

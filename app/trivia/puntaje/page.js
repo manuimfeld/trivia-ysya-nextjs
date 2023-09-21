@@ -22,9 +22,15 @@ const Points = () => {
     restartGame();
   };
 
-  const postPoints = async () => {
+  const postPoints = async (points) => {
     try {
-      const response = await fetch("/api/leaderboard");
+      const response = await fetch("/api/leaderboard", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ points: points }),
+      });
       const data = await response.json();
 
       if (response.ok) {
@@ -38,16 +44,10 @@ const Points = () => {
   };
 
   return (
-    <div className="h-screen w-screen">
-      <div className="h-full w-3/4 mx-auto flex flex-col justify-center items-center text-center">
+    <section className="text-white text-center  z-10  h-screen w-screen p-8 mx-auto">
+      <div className="mx-auto w-full sm:w-3/6 lg:w-2/6 h-full flex flex-col items-center justify-center">
         {!session ? (
           <>
-            <h1 className="text-white bg-orange-300">
-              ¡Gracias por jugar a nuestra trivia! ¿Quieres mostrar tus
-              habilidades y compararte con otros jugadores? Inicia sesión para
-              publicar tu puntuación en la página y competir en nuestro ranking
-              de trivia. ¡Demuestra que eres el mejor!
-            </h1>
             <p className="text-white">
               Respuestas correctas:{" "}
               <span className="text-green-400">
@@ -60,10 +60,20 @@ const Points = () => {
                 {answerData.incorrectAnswers}
               </span>
             </p>
+            <h1 className="text-white bg-orange-300">
+              ¡Gracias por jugar a nuestra trivia! ¿Quieres mostrar tus
+              habilidades y compararte con otros jugadores? Inicia sesión para
+              publicar tu puntuación en la página y competir en nuestro ranking
+              de trivia. ¡Demuestra que eres el mejor!
+            </h1>
+            <Leaderboard />
             <LoginButton />
           </>
         ) : (
           <>
+            <p className="text-white">
+              ¡Hola, {session.user.name}! Tus resultados son:
+            </p>
             <p className="text-white">
               Respuestas correctas:{" "}
               <span className="text-green-400">
@@ -78,7 +88,7 @@ const Points = () => {
             </p>
             <Leaderboard />
             <button
-              onClick={postPoints}
+              onClick={() => postPoints(answerData.correctAnswers)}
               className="mt-2 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-[#fc6812] "
             >
               Subir puntuación
@@ -90,11 +100,11 @@ const Points = () => {
             >
               Volver a intentar
             </Link>
-            <LoginButton />
+            <LoginButton session={session} />
           </>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 export default Points;

@@ -1,41 +1,51 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
 
 const Leaderboard = () => {
+  const [leaderData, setLeaderData] = useState(null);
+
+  useEffect(() => {
+    const fetchBoard = async () => {
+      try {
+        const response = await fetch("/api/leaderboard");
+        if (response.ok) {
+          const data = await response.json();
+          setLeaderData([...data]);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchBoard();
+  }, []);
+
   return (
-    <table className="w-full md:w-2/4 text-white bg-red-500 rounded-xl">
-      <tr className="rounded-full bg-orange-400 mb-2 my-2 px-2 h-10 mx-auto  w-[calc(100%_-_16px)] flex items-center">
-        <td className="text-left flex-grow h-6">1</td>
-        <td className="text-left w-3/4 h-6">
-          <Image
-            objectFit="cover"
-            quality={100}
-            width={5}
-            height={5}
-            alt=""
-            src="/profile.jpg"
-            className="inline h-5 w-auto rounded-full"
-          />{" "}
-          Benito Pérez
-        </td>
-        <td className="text-left  flex-grow h-6">7</td>
-      </tr>
-      <tr className="rounded-full bg-orange-400 mb-2 my-2 px-2 h-10 mx-auto  w-[calc(100%_-_16px)] flex items-center">
-        <td className="text-left flex-grow h-6">1</td>
-        <td className="text-left w-3/4 h-6">
-          <Image
-            objectFit="cover"
-            quality={100}
-            width={5}
-            height={5}
-            alt=""
-            src="/profile.jpg"
-            className="inline h-5 w-auto rounded-full"
-          />{" "}
-          Benito Pérez
-        </td>
-        <td className="text-left  flex-grow h-6">7</td>
-      </tr>
-    </table>
+    <>
+      {leaderData !== null ? (
+        leaderData.map((players, index) => {
+          return (
+            <>
+              <h1 className="text-white">TOP 5 JUGADORES</h1>
+              <div
+                key={index}
+                className="rounded-[10px] bg-white h-14 w-full p-[10px] mb-2 flex items-center font-bold text-black"
+              >
+                <p className="text-left mr-[20px] text-lg">{index + 1}</p>
+                <p className="text-left text-lg">{players.username}</p>
+                <div className="ml-auto py-2 px-4 bg-gradient-to-r from-[rgba(255,_87,_51,1)] to-[rgba(255,_87,_51,0.75)] rounded-[20px]">
+                  <p className="text-left text-sm text-white">
+                    {players.points}pts
+                  </p>
+                </div>
+              </div>
+            </>
+          );
+        })
+      ) : (
+        <h2>Cargando puntuaciones...</h2>
+      )}
+    </>
   );
 };
 export default Leaderboard;

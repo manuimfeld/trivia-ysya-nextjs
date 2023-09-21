@@ -30,17 +30,19 @@ const Trivia = () => {
 
   if (currentQuestion !== null) {
     return (
-      <section className="z-10 flex flex-col items-center justify-start h-screen w-screen">
-        <h1>{answerData.totalQuestions}/11</h1>
-        <div className="mt-6 md:mt-24 relative h-1/3 w-3/4  rounded-md">
-          <VideoPlayer id={currentQuestion.id} />
-        </div>
-        <div className="w-3/4  flex flex-col md:flex-row flex-wrap justify-start items-center  md:justify-between md:items-center">
-          <Timer />
-          {currentQuestion.options.map((answer, index) => {
-            return <TriviaAnswers key={index} answer={answer} />;
-          })}
-          <ContinueButton />
+      <section className="text-white text-center z-10  h-screen w-screen p-8 mx-auto">
+        <div className="mx-auto w-full sm:w-5/6 lg:w-4/6 h-full flex flex-col items-center justify-center">
+          <h1>{answerData.totalQuestions}/11</h1>
+          <div className=" relative h-1/3 w-3/4  rounded-md">
+            <VideoPlayer id={currentQuestion.id} />
+          </div>
+          <div className="w-3/4  flex flex-col md:flex-row flex-wrap justify-start items-center  md:justify-between md:items-center">
+            <Timer />
+            {currentQuestion.options.map((answer, index) => {
+              return <TriviaAnswers key={index} answer={answer} />;
+            })}
+            <ContinueButton />
+          </div>
         </div>
       </section>
     );
