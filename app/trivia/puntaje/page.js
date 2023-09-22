@@ -9,14 +9,13 @@ import Link from "next/link";
 
 const Points = () => {
   const answerData = useAnswerStore((state) => state.answerData);
+  const { data: session } = useSession();
 
   useEffect(() => {
     if (answerData.totalQuestions < 11) {
       redirect("/trivia");
     }
   }, []);
-
-  const { data: session } = useSession();
 
   const handleRetry = () => {
     restartGame();
@@ -100,7 +99,7 @@ const Points = () => {
             >
               Volver a intentar
             </Link>
-            <LoginButton session={session} />
+            <LoginButton />
           </>
         )}
       </div>
