@@ -12,15 +12,13 @@ export const checkAnswer = (e) => {
     const isCorrectAnswer = answerButton.innerHTML === currentQuestion.title;
     if (isCorrectAnswer) {
       incrementCorrectAnswer();
-      answerButton.classList.add("correct-answer");
+      answerButton.classList.add("selected-correct-answer");
       toggleIsPlaying();
     } else {
       incrementIncorrectAnswer();
       answerButton.classList.add("incorrect-answer");
       toggleIsPlaying();
     }
-
-    answerButton.classList.add("selected-answer");
   };
 
   handleAnswer();
