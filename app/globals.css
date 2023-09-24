@@ -23,18 +23,10 @@
   z-index: 1; /* Asegura que el contenido esté por encima de la imagen */
 }
 
-.selected-correct-answer {
-  background-color: green !important;
-}
-
 .correct-answer {
-  border: 3px solid green !important;
+  background-color: green !important;
 }
 
 .incorrect-answer {
   background-color: red !important;
-}
-
-.selected-answer {
-  border: 2px solid white !important;
 }
