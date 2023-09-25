@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={poppins.className}>
         <Providers>
           <main
-            className="h-screen w-screen"
+            className="min-h-screen w-screen"
             role="main"
             aria-label="Contenedor de la aplicación"
           >
