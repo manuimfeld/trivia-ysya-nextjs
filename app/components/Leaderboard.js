@@ -26,7 +26,9 @@ const Leaderboard = () => {
         leaderData.map((players, index) => {
           return (
             <>
-              <h1 className="text-white">TOP 5 JUGADORES</h1>
+              <h1 className="text-[#fc6812] bg-white py-2 px-6 rounded font-bold mb-2">
+                TOP 5 JUGADORES
+              </h1>
               <div
                 key={index}
                 className="rounded-[10px] bg-white h-14 w-full p-[10px] mb-2 flex items-center font-bold text-black"
