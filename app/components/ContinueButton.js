@@ -7,6 +7,8 @@ export const ContinueButton = () => {
   const setCurrentQuestion = useAnswerStore(
     (state) => state.setCurrentQuestion
   );
+  const { saveUserSelection } = useAnswerStore();
+  const answerData = useAnswerStore((state) => state.answerData);
 
   const handleChange = () => {
     // Detener el temporizador y resetearlo
@@ -14,6 +16,7 @@ export const ContinueButton = () => {
     reset();
     // Cargar una nueva question aleatoria
     setCurrentQuestion(randomVideo());
+    saveUserSelection(null);
   };
 
   return (
@@ -23,7 +26,7 @@ export const ContinueButton = () => {
         onClick={handleChange}
         className="mt-2 text-white font-bold uppercase w-full py-2 px-4 rounded-xl bg-[#fc6812] disabled:bg-[#b46638] disabled:text-gray-400"
       >
-        Siguiente
+        {`${answerData.totalQuestions === 11 ? "Ver puntuaciòn" : "Siguiente"}`}
       </button>
     )
   );
