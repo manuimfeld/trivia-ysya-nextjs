@@ -7,6 +7,7 @@ export const useAnswerStore = create((set) => ({
     incorrectAnswers: 0,
     currentQuestion: null,
   },
+  userSelection: null,
   setCurrentQuestion: (data) =>
     set((state) => ({
       answerData: {
@@ -28,7 +29,6 @@ export const useAnswerStore = create((set) => ({
         totalQuestions: state.answerData.totalQuestions + 1,
       },
     })),
-
   incrementIncorrectAnswer: () =>
     set((state) => ({
       answerData: {
@@ -36,5 +36,9 @@ export const useAnswerStore = create((set) => ({
         incorrectAnswers: state.answerData.incorrectAnswers + 1,
         totalQuestions: state.answerData.totalQuestions + 1,
       },
+    })),
+  saveUserSelection: (selectedAnswer) =>
+    set(() => ({
+      userSelection: selectedAnswer,
     })),
 }));
