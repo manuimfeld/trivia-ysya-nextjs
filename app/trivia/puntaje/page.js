@@ -47,26 +47,29 @@ const Points = () => {
       <div className="mx-auto w-full sm:w-3/6 lg:w-2/6 h-full flex flex-col items-center justify-center">
         {!session ? (
           <>
-            <p className="text-white">
-              Respuestas correctas:{" "}
-              <span className="text-green-400">
-                {answerData.correctAnswers}
-              </span>
-            </p>
-            <p className="text-white">
-              Respuestas incorrectas:{" "}
-              <span className="text-red-400">
-                {answerData.incorrectAnswers}
-              </span>
-            </p>
-            <h1 className="text-white bg-orange-300">
-              ¡Gracias por jugar a nuestra trivia! ¿Quieres mostrar tus
-              habilidades y compararte con otros jugadores? Inicia sesión para
-              publicar tu puntuación en la página y competir en nuestro ranking
-              de trivia. ¡Demuestra que eres el mejor!
-            </h1>
+            <div className="bg-gray-500  w-full border-[3px] p-3 mb-8 rounded-md">
+              <p className="text-white">
+                Respuestas correctas:{" "}
+                <span className="text-green-400">
+                  {answerData.correctAnswers}
+                </span>
+              </p>
+              <p className="text-white">
+                Respuestas incorrectas:{" "}
+                <span className="text-red-400">
+                  {answerData.incorrectAnswers}
+                </span>
+              </p>
+            </div>
             <Leaderboard />
             <LoginButton />
+            <Link
+              onClick={handleRetry}
+              href="/trivia"
+              className="mt-2 bg-[#fc6812] font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl  text-white  "
+            >
+              Volver a jugar
+            </Link>
           </>
         ) : (
           <>

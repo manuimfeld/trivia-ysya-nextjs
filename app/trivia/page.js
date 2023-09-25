@@ -8,6 +8,7 @@ import { randomVideo } from "../helpers/randomVideo";
 import { redirect } from "next/navigation";
 import { useAnswerStore } from "../store/answerStore";
 import removeClasses from "../helpers/removeClasses";
+import ResultMessage from "../components/ResultMessage";
 
 const Trivia = () => {
   const answerData = useAnswerStore((state) => state.answerData);
@@ -32,7 +33,9 @@ const Trivia = () => {
     return (
       <section className="text-white text-center z-10  h-screen w-screen p-8 mx-auto">
         <div className="mx-auto w-full sm:w-5/6 lg:w-4/6 h-full flex flex-col items-center justify-center">
-          <h1>{answerData.totalQuestions}/11</h1>
+          <h1 className="py-2 px-4 m-2 bg-gradient-to-r from-[rgba(255,_87,_51,1)] to-[rgba(255,_87,_51,0.75)] rounded-[20px]">
+            {answerData.totalQuestions}/11
+          </h1>
           <div className=" relative h-1/3 w-3/4  rounded-md">
             <VideoPlayer id={currentQuestion.id} />
           </div>
@@ -41,6 +44,7 @@ const Trivia = () => {
             {currentQuestion.options.map((answer, index) => {
               return <TriviaAnswers key={index} answer={answer} />;
             })}
+            <ResultMessage />
             <ContinueButton />
           </div>
         </div>
