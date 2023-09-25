@@ -3,8 +3,7 @@ import { timerStore } from "../store/timerStore";
 
 export const checkAnswer = (e) => {
   const answerButton = e.target;
-  const { currentQuestion } = useAnswerStore.getState().answerData; // Llama a la función para incrementar la respuesta correcta
-  const { incrementCorrectAnswer, incrementIncorrectAnswer } =
+  const { currentQuestion, incrementCorrectAnswer, incrementIncorrectAnswer } =
     useAnswerStore.getState();
   const toggleIsPlaying = timerStore.getState().toggleIsPlaying;
 
