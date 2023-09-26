@@ -1,26 +1,38 @@
 import { useAnswerStore } from "../store/answerStore";
 import { timerStore } from "../store/timerStore";
 
-export const checkAnswer = (e) => {
+// Función para verificar la respuesta seleccionada por el usuario
+export const checkAnswer = (e, currentQuestion) => {
   const answerButton = e.target;
-  const { currentQuestion } = useAnswerStore.getState().answerData; // Llama a la función para incrementar la respuesta correcta
-  const { incrementCorrectAnswer, incrementIncorrectAnswer } =
+
+  // Verifica si la respuesta seleccionada es correcta
+  const isCorrectAnswer = answerButton.innerHTML === currentQuestion;
+
+  // Obtiene las funciones para sumar puntos por respuestas correctas e incorrectas
+  const { incrementCorrectAnswerCount, incrementIncorrectAnswerCount } =
     useAnswerStore.getState();
+
+  // Obtiene la función para pausar o reanudar el temporizador
   const toggleIsPlaying = timerStore.getState().toggleIsPlaying;
 
+  // Función para procesar la respuesta
   const handleAnswer = () => {
-    const isCorrectAnswer = answerButton.innerHTML === currentQuestion.title;
     if (isCorrectAnswer) {
-      incrementCorrectAnswer();
+      // Si la respuesta es correcta, sumamos puntos
+      incrementCorrectAnswerCount();
+
+      // Marca la respuesta como correcta agregandole un estilo
       answerButton.classList.add("correct-answer");
+
+      // Pausa el temporizador
       toggleIsPlaying();
     } else {
-      incrementIncorrectAnswer();
+      incrementIncorrectAnswerCount();
       answerButton.classList.add("incorrect-answer");
       toggleIsPlaying();
     }
   };
 
+  // Llamo a la función para procesar la respuesta
   handleAnswer();
 };
-//
