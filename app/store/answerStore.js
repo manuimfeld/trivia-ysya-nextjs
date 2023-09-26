@@ -8,6 +8,8 @@ export const useAnswerStore = create((set) => ({
     currentQuestion: null,
   },
   userSelection: null,
+
+  // Establece la pregunta y las opciones actuales en el estado
   setCurrentQuestionData: (data) => {
     set((state) => ({
       answerData: {
@@ -17,15 +19,7 @@ export const useAnswerStore = create((set) => ({
     }));
   },
 
-  setAnswerDataFields: (data) => {
-    set((state) => ({
-      answerData: {
-        ...state.answerData,
-        ...data,
-      },
-    }));
-  },
-
+  // Incrementar el contador de respuestas correctas
   incrementCorrectAnswerCount: () => {
     set((state) => ({
       answerData: {
@@ -36,6 +30,7 @@ export const useAnswerStore = create((set) => ({
     }));
   },
 
+  // Incrementar el contador de respuestas incorrectas
   incrementIncorrectAnswerCount: () => {
     set((state) => ({
       answerData: {
@@ -46,6 +41,7 @@ export const useAnswerStore = create((set) => ({
     }));
   },
 
+  // Guarda la respuesta que seleccionó el usuario
   saveUserSelection: (selectedAnswer) => {
     set((state) => ({
       userSelection: selectedAnswer,
