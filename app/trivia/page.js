@@ -11,19 +11,26 @@ import removeClasses from "../helpers/removeClasses";
 import ResultMessage from "../components/ResultMessage";
 
 const Trivia = () => {
-  const answerData = useAnswerStore((state) => state.answerData);
-  const { currentQuestion } = useAnswerStore((state) => state.answerData);
-  const setCurrentQuestion = useAnswerStore(
-    (state) => state.setCurrentQuestion
+  // Obtener los datos de la pregunta y las respuestas
+  const { currentQuestion, totalQuestions } = useAnswerStore(
+    (state) => state.answerData
   );
 
+  // Función para establecer la pregunta y las respuestas
+  const setCurrentQuestionData = useAnswerStore(
+    (state) => state.setCurrentQuestionData
+  );
+
+  // Efecto que se ejecuta cuando cambia la pregunta actual
   useEffect(() => {
-    if (currentQuestion !== null && answerData.totalQuestions === 11) {
+    // Redirigir a la página de puntuación si ya se respondieron todas las preguntas
+    if (currentQuestion !== null && totalQuestions === 11) {
       redirect("/trivia/puntaje");
     }
 
+    // Si no hay una pregunta actual, seleccionar una pregunta aleatoria
     if (currentQuestion === null) {
-      setCurrentQuestion(randomVideo());
+      setCurrentQuestionData(randomVideo());
     }
 
     removeClasses();
@@ -34,11 +41,9 @@ const Trivia = () => {
       <section className="text-white text-center z-10  h-screen w-screen p-8 mx-auto">
         <div className="mx-auto w-full sm:w-5/6 lg:w-4/6 h-full flex flex-col items-center justify-center">
           <h1 className="py-2 px-4 m-2 bg-gradient-to-r from-[rgba(255,_87,_51,1)] to-[rgba(255,_87,_51,0.75)] rounded-[20px]">
-            {answerData.totalQuestions}/11
+            {totalQuestions}/11
           </h1>
-          <div className=" relative h-1/3 w-3/4  rounded-md">
-            <VideoPlayer id={currentQuestion.id} />
-          </div>
+          <VideoPlayer id={currentQuestion.id} />
           <div className="w-3/4  flex flex-col md:flex-row flex-wrap justify-start items-center  md:justify-between md:items-center">
             <Timer />
             {currentQuestion.options.map((answer, index) => {
