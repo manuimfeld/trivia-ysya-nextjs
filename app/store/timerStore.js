@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const timerStore = create((set) => ({
+export const useTimerStore = create((set) => ({
   timer: 10,
   isPlaying: true, // Estado de juego, inicialmente en reproducción
 
@@ -16,4 +16,3 @@ export const timerStore = create((set) => ({
       timer: 10,
     })),
 }));
-//
