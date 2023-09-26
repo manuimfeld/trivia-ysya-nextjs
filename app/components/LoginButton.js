@@ -15,7 +15,7 @@ export default function LoginButton() {
         </>
       ) : (
         <>
-          <button className="text-white" onClick={() => signOut}>
+          <button className="text-white" onClick={() => signOut()}>
             Cerrar sesión
           </button>
         </>

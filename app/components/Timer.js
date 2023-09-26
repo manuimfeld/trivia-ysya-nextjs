@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-import { timerStore } from "../store/timerStore";
+import { useTimerStore } from "../store/timerStore";
 import { useAnswerStore } from "../store/answerStore";
 
 export const Timer = () => {
-  const { timer, decrement, isPlaying, toggleIsPlaying } = timerStore();
-  const incrementIncorrectAnswer = useAnswerStore(
-    (state) => state.incrementIncorrectAnswer
-  );
+  // Obtener el estado del temporizador y las funciones relacionadas
+  const { timer, decrement, isPlaying, toggleIsPlaying } = useTimerStore();
+  const { incrementIncorrectAnswerCount } = useAnswerStore.getState();
 
   useEffect(() => {
     let timerInterval;
@@ -18,9 +17,9 @@ export const Timer = () => {
         decrement();
       }
 
-      // Si el temporizador llega a 0 y el juego está en curso, activa el toggle
+      // Si el temporizador llega a 0 y el juego está en curso, se ejecutan algunas funciones.
       if (timer === 0 && isPlaying) {
-        incrementIncorrectAnswer();
+        incrementIncorrectAnswerCount();
         toggleIsPlaying();
         clearInterval(timerInterval); // Detiene el intervalo
       }

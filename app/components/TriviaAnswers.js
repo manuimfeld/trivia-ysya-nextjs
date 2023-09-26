@@ -1,15 +1,18 @@
 import { checkAnswer } from "../helpers/checkAnswer";
 import { useAnswerStore } from "../store/answerStore";
-import { timerStore } from "../store/timerStore";
+import { useTimerStore } from "../store/timerStore";
 
-export const TriviaAnswers = ({ answer }) => {
-  const isPlaying = timerStore((state) => state.isPlaying);
-  const timer = timerStore((state) => state.timer);
+export const TriviaAnswers = ({ answer, currentQuestion }) => {
+  // Obtener el estado del temporizador y si el juego está en curso
+  const { isPlaying, timer } = useTimerStore();
+
+  // Obtener la función para guardar la selección del usuario
   const { saveUserSelection } = useAnswerStore();
 
+  // Manejar la selección de la respuesta
   const handleAnswer = (e) => {
-    checkAnswer(e);
     saveUserSelection(answer);
+    checkAnswer(e, answer, currentQuestion);
   };
 
   return (

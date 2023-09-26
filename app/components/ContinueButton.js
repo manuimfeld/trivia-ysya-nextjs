@@ -1,21 +1,18 @@
-import { timerStore } from "../store/timerStore";
+import { useTimerStore } from "../store/timerStore";
 import { randomVideo } from "../helpers/randomVideo";
 import { useAnswerStore } from "../store/answerStore";
 
 export const ContinueButton = () => {
-  const { timer, reset, isPlaying, toggleIsPlaying } = timerStore();
-  const setCurrentQuestion = useAnswerStore(
-    (state) => state.setCurrentQuestion
-  );
-  const { saveUserSelection } = useAnswerStore();
-  const answerData = useAnswerStore((state) => state.answerData);
+  const { timer, reset, isPlaying, toggleIsPlaying } = useTimerStore();
+  const { setCurrentQuestionData, saveUserSelection, answerData } =
+    useAnswerStore();
 
   const handleChange = () => {
-    // Detener el temporizador y resetearlo
-    toggleIsPlaying();
+    // Resetear el temporizador, e iniciarlo
     reset();
-    // Cargar una nueva question aleatoria
-    setCurrentQuestion(randomVideo());
+    toggleIsPlaying();
+    // Cargar una nueva pregunta aleatoria y borrar la seleccionada
+    setCurrentQuestionData(randomVideo());
     saveUserSelection(null);
   };
 
