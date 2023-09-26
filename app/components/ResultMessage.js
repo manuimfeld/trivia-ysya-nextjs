@@ -4,7 +4,10 @@ import Message from "./Message";
 
 const ResultMessage = () => {
   // Obtener la selección del usuario, la pregunta actual, y el tiempo
-  const { userSelection, currentQuestion } = useAnswerStore();
+  const {
+    userSelection,
+    answerData: { currentQuestion },
+  } = useAnswerStore();
   const timer = useTimerStore((state) => state.timer);
 
   if (timer === 0) {

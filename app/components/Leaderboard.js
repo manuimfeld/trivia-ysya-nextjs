@@ -35,7 +35,7 @@ const Leaderboard = () => {
         <p>{error}</p>
       ) : leaderData ? (
         <>
-          <h1 className="text-[#fc6812] bg-white py-2 px-6 rounded font-bold mb-2">
+          <h1 className="text-[#fc6812] bg-white py-2 px-6 rounded-[10px] w-full font-bold mb-2">
             TOP 5 JUGADORES
           </h1>
           {leaderData.map((player, index) => (

@@ -21,7 +21,7 @@ const Trivia = () => {
   useEffect(() => {
     // Redirigir a la página de puntuación si ya se respondieron todas las preguntas
     if (currentQuestion !== null && totalQuestions === 11) {
-      redirect("/trivia/puntaje");
+      redirect("/trivia/points");
     }
 
     // Si no hay una pregunta actual, seleccionar una pregunta aleatoria
