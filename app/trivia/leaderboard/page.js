@@ -18,4 +18,3 @@ const TopPlayers = () => {
   );
 };
 export default TopPlayers;
-//

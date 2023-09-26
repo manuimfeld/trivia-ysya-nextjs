@@ -11,15 +11,11 @@ import removeClasses from "../helpers/removeClasses";
 import ResultMessage from "../components/ResultMessage";
 
 const Trivia = () => {
-  // Obtener los datos de la pregunta y las respuestas
-  const { currentQuestion, totalQuestions } = useAnswerStore(
-    (state) => state.answerData
-  );
-
-  // Función para establecer la pregunta y las respuestas
-  const setCurrentQuestionData = useAnswerStore(
-    (state) => state.setCurrentQuestionData
-  );
+  // Obtener la pregunta y las respuestas actuales, las respondidas, y la funcion para setear la pregunta
+  const {
+    answerData: { currentQuestion, totalQuestions },
+    setCurrentQuestionData,
+  } = useAnswerStore();
 
   // Efecto que se ejecuta cuando cambia la pregunta actual
   useEffect(() => {
@@ -47,7 +43,13 @@ const Trivia = () => {
           <div className="w-3/4  flex flex-col md:flex-row flex-wrap justify-start items-center  md:justify-between md:items-center">
             <Timer />
             {currentQuestion.options.map((answer, index) => {
-              return <TriviaAnswers key={index} answer={answer} />;
+              return (
+                <TriviaAnswers
+                  key={index}
+                  answer={answer}
+                  currentQuestion={currentQuestion.title}
+                />
+              );
             })}
             <ResultMessage />
             <ContinueButton />
