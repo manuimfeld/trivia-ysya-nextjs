@@ -1,19 +1,14 @@
 import { useAnswerStore } from "../store/answerStore";
-import { timerStore } from "../store/timerStore";
+import { useTimerStore } from "../store/timerStore";
 
-// Función para verificar la respuesta seleccionada por el usuario
-export const checkAnswer = (e, currentQuestion) => {
+export const checkAnswer = (e, answer, currentQuestion) => {
   const answerButton = e.target;
+  const isCorrectAnswer = answer === currentQuestion; // Verifica si la respuesta seleccionada es correcta
 
-  // Verifica si la respuesta seleccionada es correcta
-  const isCorrectAnswer = answerButton.innerHTML === currentQuestion;
-
-  // Obtiene las funciones para sumar puntos por respuestas correctas e incorrectas
   const { incrementCorrectAnswerCount, incrementIncorrectAnswerCount } =
     useAnswerStore.getState();
 
-  // Obtiene la función para pausar o reanudar el temporizador
-  const toggleIsPlaying = timerStore.getState().toggleIsPlaying;
+  const toggleIsPlaying = useTimerStore.getState().toggleIsPlaying; // Obtiene la función para (en este caso) pausar el temporizador
 
   // Función para procesar la respuesta
   const handleAnswer = () => {

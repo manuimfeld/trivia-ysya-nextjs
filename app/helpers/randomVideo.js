@@ -10,4 +10,3 @@ export const randomVideo = () => {
   // Retorno un objeto con la data aleatoria copiando el objeto del array para evitar modificarlo
   return { ...videosArray[randomIndex] };
 };
-//
