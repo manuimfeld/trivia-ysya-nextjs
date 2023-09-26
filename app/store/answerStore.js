@@ -8,37 +8,47 @@ export const useAnswerStore = create((set) => ({
     currentQuestion: null,
   },
   userSelection: null,
-  setCurrentQuestion: (data) =>
+  setCurrentQuestionData: (data) => {
     set((state) => ({
       answerData: {
         ...state.answerData,
         currentQuestion: data,
       },
-    })),
-  setAnswerData: (data) =>
-    set(() => ({
+    }));
+  },
+
+  setAnswerDataFields: (data) => {
+    set((state) => ({
       answerData: {
+        ...state.answerData,
         ...data,
       },
-    })),
-  incrementCorrectAnswer: () =>
+    }));
+  },
+
+  incrementCorrectAnswerCount: () => {
     set((state) => ({
       answerData: {
         ...state.answerData,
         correctAnswers: state.answerData.correctAnswers + 1,
         totalQuestions: state.answerData.totalQuestions + 1,
       },
-    })),
-  incrementIncorrectAnswer: () =>
+    }));
+  },
+
+  incrementIncorrectAnswerCount: () => {
     set((state) => ({
       answerData: {
         ...state.answerData,
         incorrectAnswers: state.answerData.incorrectAnswers + 1,
         totalQuestions: state.answerData.totalQuestions + 1,
       },
-    })),
-  saveUserSelection: (selectedAnswer) =>
-    set(() => ({
+    }));
+  },
+
+  saveUserSelection: (selectedAnswer) => {
+    set((state) => ({
       userSelection: selectedAnswer,
-    })),
+    }));
+  },
 }));
