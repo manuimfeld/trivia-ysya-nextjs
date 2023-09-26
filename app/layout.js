@@ -16,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <>
+    <html lang="es">
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,22 +24,24 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
       </Head>
       <Providers>
-        <main
-          className={`${poppins.className} min-h-screen w-screen`}
-          role="main"
-          aria-label="Contenedor de la aplicación"
-        >
-          <Image
-            src="/bg-antezana.jpg"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            alt="Portada del disco Antezana 247 de YSY A"
-            className="z-[-1] fixed w-full h-full"
-          />
-          {children}
-        </main>
+        <body>
+          <main
+            className={`${poppins.className} min-h-screen w-screen`}
+            role="main"
+            aria-label="Contenedor de la aplicación"
+          >
+            <Image
+              src="/bg-antezana.jpg"
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+              alt="Portada del disco Antezana 247 de YSY A"
+              className="z-[-1] fixed w-full h-full"
+            />
+            {children}
+          </main>
+        </body>
       </Providers>
-    </>
+    </html>
   );
 }
