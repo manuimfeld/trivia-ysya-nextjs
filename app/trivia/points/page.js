@@ -3,7 +3,7 @@ import LoginButton from "../../components/LoginButton";
 import { useAnswerStore } from "../../store/answerStore";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import AnswersResults from "../../components/answersResults";
+import AnswersResults from "../../components/AnswersResults";
 import { postPoints } from "../../helpers/api";
 import Leaderboard from "../../components/Leaderboard";
 import { useEffect } from "react";
@@ -45,7 +45,7 @@ const Points = () => {
             <p className="text-white">
               ¡Hola, {session.user.name}! Tus resultados son:
             </p>
-            <AnswersResults />
+            <AnswersResults answerData={answerData} />
             <Leaderboard />
             <button
               onClick={handlePostPoints}
