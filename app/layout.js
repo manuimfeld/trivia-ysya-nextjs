@@ -24,20 +24,21 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
       </Head>
       <Providers>
-        <body>
-          <main
-            className={`${poppins.className} min-h-screen w-screen`}
-            role="main"
-            aria-label="Contenedor de la aplicación"
-          >
+        <body className="relative">
+          <div className="fixed top-0 left-0 w-full h-screen z-0">
             <Image
               src="/bg-antezana.jpg"
               layout="fill"
               objectFit="cover"
               quality={100}
               alt="Portada del disco Antezana 247 de YSY A"
-              className="z-[-1] fixed w-full h-full"
             />
+          </div>
+          <main
+            className={`${poppins.className} relative min-h-screen w-screen`}
+            role="main"
+            aria-label="Contenedor de la aplicación"
+          >
             {children}
           </main>
         </body>

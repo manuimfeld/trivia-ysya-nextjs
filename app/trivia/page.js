@@ -39,14 +39,14 @@ const Trivia = () => {
         initial={{ backgroundColor: "rgba(0,0,0,0.6)" }}
         animate={{ backgroundColor: "rgba(0,0,0,0)" }}
         transition={{ duration: 1 }}
-        className="text-white text-center z-10  h-screen w-screen p-8 mx-auto"
+        className="text-white text-center z-10 h-screen w-screen p-8 mx-auto"
       >
         <div className="mx-auto w-full sm:w-5/6 lg:w-4/6 h-full flex flex-col items-center justify-center">
           <h1 className="py-2 px-4 m-2 bg-gradient-to-r from-[rgba(255,_87,_51,1)] to-[rgba(255,_87,_51,0.75)] rounded-[20px]">
             {totalQuestions}/11
           </h1>
           <VideoPlayer id={currentQuestion.id} />
-          <div className="w-3/4 flex flex-col md:flex-row flex-wrap justify-start items-center  md:justify-between md:items-center">
+          <div className="w-3/4 flex flex-col md:flex-row flex-wrap justify-start items-center md:justify-between md:items-center">
             <Timer />
             {currentQuestion.options.map((answer, index) => {
               return (
