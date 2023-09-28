@@ -16,13 +16,13 @@ export default function Home() {
         </div>
         <Link
           href="/trivia"
-          className=" font-bold uppercase w-full my-8 px-4 py-2 rounded-xl bg-primary"
+          className="hover:text-white hover:bg-primary duration-200 text-primary font-bold uppercase w-full my-8 px-4 py-2 rounded-xl bg-white"
         >
           Comenzar la trivia
         </Link>
         <Link
           href="/trivia/leaderboard"
-          className="text-primary  font-bold uppercase w-full mb-4 px-4 py-2 rounded-xl bg-white"
+          className="hover:text-white hover:bg-primary duration-200 text-primary  font-bold uppercase w-full mb-4 px-4 py-2 rounded-xl bg-white"
         >
           Ver puntuaciones
         </Link>

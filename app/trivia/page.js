@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 import { useAnswerStore } from "../store/answerStore";
 import removeClasses from "../helpers/removeClasses";
 import ResultMessage from "../components/ResultMessage";
+import { motion } from "framer-motion";
 
 const Trivia = () => {
   // Obtener la pregunta y las respuestas actuales, las respondidas, y la funcion para setear la pregunta
@@ -34,7 +35,12 @@ const Trivia = () => {
 
   if (currentQuestion !== null) {
     return (
-      <section className="text-white text-center z-10  h-screen w-screen p-8 mx-auto">
+      <motion.section
+        initial={{ backgroundColor: "rgba(0,0,0,0.6)" }}
+        animate={{ backgroundColor: "rgba(0,0,0,0)" }}
+        transition={{ duration: 1 }}
+        className="text-white text-center z-10  h-screen w-screen p-8 mx-auto"
+      >
         <div className="mx-auto w-full sm:w-5/6 lg:w-4/6 h-full flex flex-col items-center justify-center">
           <h1 className="py-2 px-4 m-2 bg-gradient-to-r from-[rgba(255,_87,_51,1)] to-[rgba(255,_87,_51,0.75)] rounded-[20px]">
             {totalQuestions}/11
@@ -55,7 +61,7 @@ const Trivia = () => {
             <ContinueButton />
           </div>
         </div>
-      </section>
+      </motion.section>
     );
   }
 };

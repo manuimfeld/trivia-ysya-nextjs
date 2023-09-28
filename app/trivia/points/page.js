@@ -7,6 +7,7 @@ import AnswersResults from "../../components/AnswersResults";
 import { postPoints } from "../../helpers/api";
 import Leaderboard from "../../components/Leaderboard";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Points = () => {
   const answerData = useAnswerStore((state) => state.answerData);
@@ -26,7 +27,12 @@ const Points = () => {
   };
 
   return (
-    <section className="text-white text-center z-10 bg-darkBackground h-screen w-screen p-8 mx-auto">
+    <motion.section
+      initial={{ backgroundColor: "rgba(0,0,0,0.0)" }}
+      animate={{ backgroundColor: "rgba(0,0,0,0.6)" }}
+      transition={{ duration: 0.5 }}
+      className="text-white text-center z-10 bg-darkBackground h-screen w-screen p-8 mx-auto"
+    >
       <div className="mx-auto w-full sm:w-3/6 lg:w-2/6 h-full flex flex-col items-center justify-center">
         {!session ? (
           <>
@@ -35,7 +41,7 @@ const Points = () => {
             <LoginButton />
             <Link
               href="/trivia"
-              className="mt-2 text-primary font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-white"
+              className="mt-2 hover:text-white hover:bg-primary duration-200 text-primary font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-white"
             >
               Volver a intentar
             </Link>
@@ -49,7 +55,7 @@ const Points = () => {
             <Leaderboard />
             <button
               onClick={handlePostPoints}
-              className="mt-2 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-primary"
+              className="mt-2 hover:text-white hover:bg-primary duration-200 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-primary"
             >
               Subir puntuación
             </button>
@@ -57,7 +63,7 @@ const Points = () => {
           </>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 export default Points;

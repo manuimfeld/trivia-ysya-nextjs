@@ -9,7 +9,7 @@ const TopPlayers = () => {
 
         <Link
           href="/trivia"
-          className="mt-2 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-primary"
+          className="mt-2 hover:text-white hover:bg-primary duration-200 text-primary font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-white"
         >
           Empezar a jugar
         </Link>
