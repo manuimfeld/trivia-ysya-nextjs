@@ -23,7 +23,7 @@ export const TriviaAnswers = ({ answer, currentQuestion }) => {
       transition={{ duration: 0.5 }}
       disabled={!isPlaying || timer === 0}
       onClick={(e) => handleAnswer(e)}
-      className={`my-2 transition duration-100 ease-out  text-white font-bold uppercase w-full md:w-[45%] md:mb-2 py-2 px-4 rounded-xl bg-[#fc6812]  
+      className={`my-2 transition duration-100 ease-out  text-white font-bold uppercase w-full md:w-[45%] md:mb-2 py-2 px-4 rounded-xl bg-primary  
       `}
     >
       {answer}

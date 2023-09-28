@@ -7,10 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        primary: "#fc6812", // Color principal para componentes o fondos (naranja)
+        primaryDisabled: "b46638", // Color para los componentes disabled (naranja oscuro)
+        littleDarkBackground: "rgba(0, 0, 0, 0.6)", // Color para fondos oscuros
+        darkBackground: "rgba(0, 0, 0, 0.1)", // Color para fondos muy oscuros
+        grayButton: "#808080", // Color gris para el botón de iniciar sesión con Google
       },
     },
   },

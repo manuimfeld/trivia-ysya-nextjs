@@ -40,7 +40,7 @@ const Trivia = () => {
             {totalQuestions}/11
           </h1>
           <VideoPlayer id={currentQuestion.id} />
-          <div className="w-3/4  flex flex-col md:flex-row flex-wrap justify-start items-center  md:justify-between md:items-center">
+          <div className="w-3/4 flex flex-col md:flex-row flex-wrap justify-start items-center  md:justify-between md:items-center">
             <Timer />
             {currentQuestion.options.map((answer, index) => {
               return (

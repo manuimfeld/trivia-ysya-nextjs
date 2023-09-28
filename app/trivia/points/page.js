@@ -26,7 +26,7 @@ const Points = () => {
   };
 
   return (
-    <section className="text-white text-center z-10 bg-[rgba(0,0,0,0.6)] h-screen w-screen p-8 mx-auto">
+    <section className="text-white text-center z-10 bg-littleDarkBackground h-screen w-screen p-8 mx-auto">
       <div className="mx-auto w-full sm:w-3/6 lg:w-2/6 h-full flex flex-col items-center justify-center">
         {!session ? (
           <>
@@ -35,7 +35,7 @@ const Points = () => {
             <LoginButton />
             <Link
               href="/trivia"
-              className="mt-2 text-[#fc6812] font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-white"
+              className="mt-2 text-primary font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-white"
             >
               Volver a intentar
             </Link>
@@ -49,7 +49,7 @@ const Points = () => {
             <Leaderboard />
             <button
               onClick={handlePostPoints}
-              className="mt-2 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-[#fc6812]"
+              className="mt-2 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-primary"
             >
               Subir puntuación
             </button>

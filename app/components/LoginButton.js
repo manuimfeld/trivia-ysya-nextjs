@@ -12,7 +12,7 @@ export default function LoginButton() {
             para subir el puntaje
           </p>
           <button
-            className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-[#808080]"
+            className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-grayButton"
             onClick={() => signIn()}
           >
             <Image
@@ -28,7 +28,7 @@ export default function LoginButton() {
       ) : (
         <>
           <button
-            className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-[#808080]"
+            className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-grayButton"
             onClick={() => signOut()}
           >
             Cerrar sesión
