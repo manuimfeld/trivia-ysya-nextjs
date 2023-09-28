@@ -8,7 +8,7 @@ export const TriviaAnswers = ({ answer, currentQuestion }) => {
   const { isPlaying, timer } = useTimerStore();
 
   // Obtener la función para guardar la selección del usuario
-  const { saveUserSelection } = useAnswerStore();
+  const { saveUserSelection, userSelection } = useAnswerStore();
 
   // Manejar la selección de la respuesta
   const handleAnswer = (e) => {
@@ -24,7 +24,7 @@ export const TriviaAnswers = ({ answer, currentQuestion }) => {
       disabled={!isPlaying || timer === 0}
       onClick={(e) => handleAnswer(e)}
       className={`my-2 transition duration-100 ease-out  text-white font-bold uppercase w-full md:w-[45%] md:mb-2 py-2 px-4 rounded-xl bg-primary  
-      `}
+       `}
     >
       {answer}
     </motion.button>

@@ -10,6 +10,7 @@ import { useAnswerStore } from "../store/answerStore";
 import removeClasses from "../helpers/removeClasses";
 import ResultMessage from "../components/ResultMessage";
 import { motion } from "framer-motion";
+import TotalQuestions from "../components/TotalQuestions";
 
 const Trivia = () => {
   // Obtener la pregunta y las respuestas actuales, las respondidas, y la funcion para setear la pregunta
@@ -42,9 +43,7 @@ const Trivia = () => {
         className="text-white text-center z-10 h-screen w-screen p-8 mx-auto"
       >
         <div className="mx-auto w-full sm:w-5/6 lg:w-4/6 h-full flex flex-col items-center justify-center">
-          <h1 className="py-2 px-4 m-2 bg-gradient-to-r from-[rgba(255,_87,_51,1)] to-[rgba(255,_87,_51,0.75)] rounded-[20px]">
-            {totalQuestions}/11
-          </h1>
+          <TotalQuestions totalQuestions={totalQuestions} />
           <VideoPlayer id={currentQuestion.id} />
           <div className="w-3/4 flex flex-col md:flex-row flex-wrap justify-start items-center md:justify-between md:items-center">
             <Timer />

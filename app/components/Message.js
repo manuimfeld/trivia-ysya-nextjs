@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const Message = ({ type }) => {
   const messages = {
     timeUp: "Se acabó el tiempo",
@@ -6,7 +8,10 @@ const Message = ({ type }) => {
   };
 
   return (
-    <h2
+    <motion.h2
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
       className={`uppercase md:mx-auto md:grow-1 text-white mt-2 mb-2 ${
         type === "timeUp"
           ? "incorrect-answer"
@@ -16,7 +21,7 @@ const Message = ({ type }) => {
       } px-4 py-1 rounded-full`}
     >
       {messages[type]}
-    </h2>
+    </motion.h2>
   );
 };
 
