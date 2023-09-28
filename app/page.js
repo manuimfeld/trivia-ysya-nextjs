@@ -7,7 +7,7 @@ export default function Home() {
         <h1 className="mb-8 font-bold text-2xl">
           Bienvenido a la Trivia de YSY A
         </h1>
-        <div className="w-full border-[3px] border-primary bg-darkBackground p-3 mb-8 rounded-md">
+        <div className="w-full border-[3px] border-primary bg-black p-3 mb-8 rounded-md">
           <p>¡Prepárate para un desafío musical!</p>
           <p>
             En esta aplicación, te desafiamos a adivinar las canciones del

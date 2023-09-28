@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const TopPlayers = () => {
   return (
-    <section className="text-white text-center bg-littleDarkBackground z-10  h-screen w-screen p-8 mx-auto">
+    <section className="text-white text-center bg-darkBackground z-10  h-screen w-screen p-8 mx-auto">
       <div className="mx-auto w-full sm:w-3/6 lg:w-2/6 h-full flex flex-col items-center justify-center">
         <Leaderboard />
 

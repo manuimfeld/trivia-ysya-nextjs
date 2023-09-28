@@ -26,7 +26,7 @@ const Points = () => {
   };
 
   return (
-    <section className="text-white text-center z-10 bg-littleDarkBackground h-screen w-screen p-8 mx-auto">
+    <section className="text-white text-center z-10 bg-darkBackground h-screen w-screen p-8 mx-auto">
       <div className="mx-auto w-full sm:w-3/6 lg:w-2/6 h-full flex flex-col items-center justify-center">
         {!session ? (
           <>
