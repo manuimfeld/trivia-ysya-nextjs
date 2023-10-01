@@ -14,9 +14,13 @@ export default function LoginButton() {
     }
   };
 
-  const handleLogout = () => {
-    deletePoints();
-    signOut("google", { callbackUrl: "/" });
+  const handleLogout = async () => {
+    try {
+      await deletePoints();
+      signOut("google", { callbackUrl: "/" });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

@@ -13,7 +13,7 @@ export const savePoints = async () => {
   }
 };
 
-export const deletePoints = () => {
+export const deletePoints = async () => {
   if (typeof window !== "undefined") {
     localStorage.removeItem("points");
   }
