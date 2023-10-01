@@ -1,8 +1,20 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { deletePoints, savePoints } from "../helpers/localPoints";
 
 export default function LoginButton() {
   const { data: session } = useSession();
+
+  const handleLogin = () => {
+    savePoints();
+    signIn("google", { callbackUrl: "/trivia/points" });
+  };
+
+  const handleLogout = () => {
+    deletePoints();
+    signOut("google", { callbackUrl: "/" });
+  };
+
   return (
     <div>
       {!session ? (
@@ -13,7 +25,7 @@ export default function LoginButton() {
           </p>
           <button
             className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-grayButton"
-            onClick={() => signIn()}
+            onClick={handleLogin}
           >
             <Image
               src="/google.svg"
@@ -29,7 +41,7 @@ export default function LoginButton() {
         <>
           <button
             className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-grayButton"
-            onClick={() => signOut()}
+            onClick={handleLogout}
           >
             Cerrar sesión
           </button>

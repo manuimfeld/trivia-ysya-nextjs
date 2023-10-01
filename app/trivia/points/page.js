@@ -8,6 +8,7 @@ import { postPoints } from "../../helpers/api";
 import Leaderboard from "../../components/Leaderboard";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { deletePoints, getLocalPoints } from "../../helpers/localPoints";
 
 const Points = () => {
   const answerData = useAnswerStore((state) => state.answerData);
@@ -20,7 +21,12 @@ const Points = () => {
 
   const handlePostPoints = async () => {
     try {
-      await postPoints(correctAnswers);
+      if (getLocalPoints !== null) {
+        await postPoints(getLocalPoints);
+        deletePoints();
+      } else {
+        await postPoints(answerData.correctAnswers);
+      }
     } catch (error) {
       console.error("Error al subir la puntuación:", error);
     }
