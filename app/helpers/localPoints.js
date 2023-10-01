@@ -1,25 +1,31 @@
 import { useAnswerStore } from "../store/answerStore";
 
-const { correctAnswers } = useAnswerStore.getState().answerData;
-let localPoints = localStorage.getItem("points");
-
 export const savePoints = async () => {
-  if (localPoints !== null) {
-    localPoints = parseInt(localPoints);
-    localStorage.setItem("points", (localPoints += correctAnswers));
-  } else {
-    localStorage.setItem("points", parseInt(correctAnswers));
+  const { correctAnswers } = useAnswerStore.getState().answerData;
+  let localPoints = localStorage.getItem("points");
+  if (typeof window !== "undefined") {
+    if (localPoints !== null) {
+      localPoints = parseInt(localPoints);
+      localStorage.setItem("points", (localPoints += correctAnswers));
+    } else {
+      localStorage.setItem("points", parseInt(correctAnswers));
+    }
   }
 };
 
 export const deletePoints = () => {
-  localStorage.removeItem("points");
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("points");
+  }
 };
 
 export const getLocalPoints = () => {
-  if (localPoints !== null) {
-    return parseInt(localPoints);
-  } else {
-    return null;
+  let localPoints = localStorage.getItem("points");
+  if (typeof window !== "undefined") {
+    if (localPoints !== null) {
+      return parseInt(localPoints);
+    } else {
+      return null;
+    }
   }
 };

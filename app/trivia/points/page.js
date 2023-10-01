@@ -7,16 +7,19 @@ import AnswersResults from "../../components/AnswersResults";
 import { postPoints } from "../../helpers/api";
 import Leaderboard from "../../components/Leaderboard";
 import { motion } from "framer-motion";
-import { deletePoints, getLocalPoints } from "../../helpers/localPoints";
+import { getLocalPoints } from "../../helpers/localPoints";
 
 const Points = () => {
   const answerData = useAnswerStore((state) => state.answerData);
   const { data: session } = useSession();
+  let localPoints;
+
+  if (typeof window !== "undefined") {
+    localPoints = getLocalPoints();
+  }
 
   const handlePostPoints = async () => {
     try {
-      let localPoints = getLocalPoints(); // Obtiene los puntos locales
-
       if (localPoints !== null) {
         // Si se encontraron puntos locales, envíalos al servidor
         await postPoints(localPoints);
