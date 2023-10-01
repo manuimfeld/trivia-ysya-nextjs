@@ -5,9 +5,13 @@ import { deletePoints, savePoints } from "../helpers/localPoints";
 export default function LoginButton() {
   const { data: session } = useSession();
 
-  const handleLogin = () => {
-    savePoints();
-    signIn("google", { callbackUrl: "/trivia/points" });
+  const handleLogin = async () => {
+    try {
+      await savePoints();
+      signIn("google", { callbackUrl: "/trivia/points" });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleLogout = () => {

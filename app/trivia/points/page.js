@@ -22,7 +22,7 @@ const Points = () => {
   const handlePostPoints = async () => {
     try {
       if (getLocalPoints !== undefined) {
-        await postPoints(getLocalPoints);
+        await postPoints(getLocalPoints());
         deletePoints();
       } else {
         await postPoints(answerData.correctAnswers);

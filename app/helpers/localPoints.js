@@ -3,7 +3,7 @@ import { useAnswerStore } from "../store/answerStore";
 const { correctAnswers } = useAnswerStore.getState().answerData;
 let localPoints = localStorage.getItem("points");
 
-export const savePoints = () => {
+export const savePoints = async () => {
   if (localPoints !== null) {
     localPoints = parseInt(localPoints);
     localStorage.setItem("points", (localPoints += correctAnswers));
