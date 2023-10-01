@@ -6,7 +6,6 @@ import Link from "next/link";
 import AnswersResults from "../../components/AnswersResults";
 import { postPoints } from "../../helpers/api";
 import Leaderboard from "../../components/Leaderboard";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { deletePoints, getLocalPoints } from "../../helpers/localPoints";
 
@@ -14,16 +13,11 @@ const Points = () => {
   const answerData = useAnswerStore((state) => state.answerData);
   const { data: session } = useSession();
 
-  useEffect(() => {
-    if (answerData.totalQuestions < 11) {
-    }
-  }, []);
-
   const handlePostPoints = async () => {
     try {
       let localPoints = getLocalPoints(); // Obtiene los puntos locales
 
-      if (localPoints !== undefined) {
+      if (localPoints !== null) {
         // Si se encontraron puntos locales, envíalos al servidor
         await postPoints(localPoints);
         deletePoints(); // Elimina los puntos locales después de enviarlos al servidor

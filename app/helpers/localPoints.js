@@ -17,5 +17,9 @@ export const deletePoints = () => {
 };
 
 export const getLocalPoints = () => {
-  return parseInt(localPoints);
+  if (localPoints !== null) {
+    return parseInt(localPoints);
+  } else {
+    return null;
+  }
 };
