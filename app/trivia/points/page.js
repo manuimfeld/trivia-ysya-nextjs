@@ -21,10 +21,14 @@ const Points = () => {
 
   const handlePostPoints = async () => {
     try {
-      if (getLocalPoints !== undefined) {
-        await postPoints(getLocalPoints());
-        deletePoints();
+      let localPoints = getLocalPoints(); // Obtiene los puntos locales
+
+      if (localPoints !== undefined) {
+        // Si se encontraron puntos locales, envíalos al servidor
+        await postPoints(localPoints);
+        deletePoints(); // Elimina los puntos locales después de enviarlos al servidor
       } else {
+        // Si no hay puntos locales, envía los puntos de answerData.correctAnswers al servidor
         await postPoints(answerData.correctAnswers);
       }
     } catch (error) {
