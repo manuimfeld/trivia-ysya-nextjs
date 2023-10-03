@@ -7,7 +7,7 @@ import AnswersResults from "../../components/AnswersResults";
 import { postPoints } from "../../helpers/api";
 import Leaderboard from "../../components/Leaderboard";
 import { motion } from "framer-motion";
-import { getLocalPoints } from "../../helpers/localPoints";
+import { deletePoints, getLocalPoints } from "../../helpers/localPoints";
 
 const Points = () => {
   const answerData = useAnswerStore((state) => state.answerData);
