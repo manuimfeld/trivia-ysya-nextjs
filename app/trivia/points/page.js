@@ -7,8 +7,7 @@ import AnswersResults from "../../components/AnswersResults";
 import { postPoints } from "../../helpers/api";
 import Leaderboard from "../../components/Leaderboard";
 import { motion } from "framer-motion";
-import { deletePoints, getLocalPoints } from "../../helpers/localPoints";
-import { showErrorAlert, showSucessAlert } from "../../helpers/showAlert";
+import { getLocalPoints } from "../../helpers/localPoints";
 import { useRouter } from "next/navigation";
 
 const Points = () => {
@@ -20,34 +19,6 @@ const Points = () => {
   if (typeof window !== "undefined") {
     localPoints = getLocalPoints();
   }
-
-  const handlePostPoints = async () => {
-    try {
-      if (localPoints !== null && localPoints > 0) {
-        // Si se encontraron puntos locales, envíalos al servidor
-        await postPoints(localPoints);
-        deletePoints(); // Elimina los puntos locales después de enviarlos al servidor
-        showSucessAlert((window.location.href = "/trivia/leaderboard"));
-      } else {
-        if (answerData.correctAnswers === 0) {
-          return showErrorAlert(
-            "No puedes subir una puntuación que sea 0",
-            () => {
-              router.push("/trivia");
-            }
-          );
-        }
-        // Si no hay puntos locales, envía los puntos de answerData.correctAnswers al servidor
-        await postPoints(answerData.correctAnswers);
-        return showSucessAlert("/trivia/leaderboard");
-      }
-    } catch (error) {
-      // Mostrar alerta de error genérico
-      return showErrorAlert("No puedes subir una puntuación que sea 0", () => {
-        router.push("/trivia");
-      });
-    }
-  };
 
   return (
     <motion.section
@@ -62,12 +33,6 @@ const Points = () => {
             <AnswersResults answerData={answerData} />
             <Leaderboard />
             <LoginButton />
-            <button
-              onClick={handlePostPoints}
-              className="mt-2 hover:text-white hover:bg-primary duration-200 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-primary"
-            >
-              Subir puntuación
-            </button>
             <Link
               href="/trivia"
               className="mt-2 hover:text-white hover:bg-primary duration-200 text-primary font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-white"
@@ -83,7 +48,7 @@ const Points = () => {
             <AnswersResults answerData={answerData} />
             <Leaderboard />
             <button
-              onClick={handlePostPoints}
+              onClick={() => postPoints(localPoints, answerData, router)}
               className="mt-2 hover:text-white hover:bg-primary duration-200 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-primary"
             >
               Subir puntuación
