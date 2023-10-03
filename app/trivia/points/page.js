@@ -9,6 +9,7 @@ import Leaderboard from "../../components/Leaderboard";
 import { motion } from "framer-motion";
 import { getLocalPoints } from "../../helpers/localPoints";
 import { useRouter } from "next/navigation";
+import { resetGame } from "../../helpers/resetGame";
 
 const Points = () => {
   const answerData = useAnswerStore((state) => state.answerData);
@@ -34,8 +35,9 @@ const Points = () => {
             <Leaderboard />
             <LoginButton />
             <Link
+              onClick={() => resetGame(router)}
               href="/trivia"
-              className="mt-2 hover:text-white hover:bg-primary duration-200 text-primary font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-white"
+              className="mt-2 hover:text-white hover:bg-primary duration-200 text-primary font-bold uppercase w-8/12 py-2 rounded-xl bg-white"
             >
               Volver a intentar
             </Link>
@@ -49,11 +51,18 @@ const Points = () => {
             <Leaderboard />
             <button
               onClick={() => postPoints(localPoints, answerData, router)}
-              className="mt-2 hover:text-white hover:bg-primary duration-200 text-white font-bold uppercase w-full md:w-2/4 py-2 px-4 rounded-xl bg-primary"
+              className="mt-2 hover:text-white hover:bg-primary duration-200 text-white font-bold uppercase w-8/12 py-2 rounded-xl bg-primary"
             >
               Subir puntuación
             </button>
             <LoginButton />
+            <Link
+              onClick={() => resetGame(router)}
+              href="/trivia"
+              className="mt-2 hover:text-white hover:bg-primary duration-200 text-primary font-bold uppercase w-8/12 py-2 rounded-xl bg-white"
+            >
+              Volver a intentar
+            </Link>
           </>
         )}
       </div>

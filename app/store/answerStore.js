@@ -19,6 +19,18 @@ export const useAnswerStore = create((set) => ({
     }));
   },
 
+  resetGameData: () => {
+    set((state) => ({
+      answerData: {
+        totalQuestions: 0,
+        correctAnswers: 0,
+        incorrectAnswers: 0,
+        currentQuestion: null,
+      },
+      userSelection: null,
+    }));
+  },
+
   // Incrementar el contador de respuestas correctas
   incrementCorrectAnswerCount: () => {
     set((state) => ({

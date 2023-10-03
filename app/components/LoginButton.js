@@ -24,15 +24,15 @@ export default function LoginButton() {
   };
 
   return (
-    <div>
+    <div className="w-full">
       {!session ? (
         <>
-          <p className="mt-4 text-sm">
-            <span className="text-red-500">* </span>Inicia sesión con Google
-            para subir el puntaje
+          <p className="mx-auto mt-4 text-sm w-8/12">
+            <span className="text-red-500">*</span>Inicia sesión con Google para
+            subir el puntaje
           </p>
           <button
-            className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-grayButton"
+            className="flex justify-center items-center mx-auto my-4 font-bold uppercasel w-8/12 py-2 rounded-xl bg-white text-grayButton"
             onClick={handleLogin}
           >
             <Image
@@ -48,7 +48,7 @@ export default function LoginButton() {
       ) : (
         <>
           <button
-            className="flex justify-center items-center mx-auto my-4 font-bold uppercase w-full md:w-2/4 py-2 px-8 rounded-xl bg-white text-grayButton"
+            className="flex justify-center items-center mx-auto my-4 font-bold uppercasel w-8/12 py-2 rounded-xl bg-white text-grayButton"
             onClick={handleLogout}
           >
             Cerrar sesión
