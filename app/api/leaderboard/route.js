@@ -24,9 +24,16 @@ export async function POST(req) {
 
   if (!session) {
     return NextResponse.json({
-      error: "Por favor, inicia sesión para subir tu puntuación",
+      error: "Inicia sesión para subir tu puntuación",
     });
   }
+
+  if (body.points <= 0) {
+    return NextResponse.json({
+      error: "Los puntos deben ser mayor que 0",
+    });
+  }
+
   try {
     const result = await db.query(
       `
